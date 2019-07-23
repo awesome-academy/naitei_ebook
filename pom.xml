@@ -27,6 +27,8 @@
 		<servletapi.version>2.5</servletapi.version>
 		<thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
 		<commons-lang3.version>3.5</commons-lang3.version>
+		<lombok.version>1.18.8</lombok.version>
+		<layout.version>2.4.1</layout.version>
 	</properties>
 
 	<dependencies>
@@ -182,12 +184,17 @@
 			<artifactId>thymeleaf-spring4</artifactId>
 			<version>${thymeleaf.version}</version>
 		</dependency>
-
+		<!-- Lombox Library -->
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.16.20</version>
-			<scope>provided</scope>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>${lombok.version}</version>
+		    <scope>provided</scope>
+		</dependency>
+			<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>${layout.version}</version>
 		</dependency>
 
 	</dependencies>

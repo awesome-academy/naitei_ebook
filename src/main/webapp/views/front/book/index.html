@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="front/layout">
+
+<div layout:fragment="body">
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-title">
+								<h2 class="title">Lifestyle</h2>
+							</div>
+						</div>
+						<div th:if="${books.empty}">
+							<p>No books available</p>
+						</div>
+						<div th:each="book : ${books}">
+							<!-- post -->
+						<div class="col-md-4">
+							<div class="post post-sm">
+								<a class="post-img" href="#"><img th:src="${book.cover}" th:alt="${book.title}"></a>
+								<div class="post-body">
+									<div class="post-category">
+										<a href="#">Lifestyle</a>
+									</div>
+									<h3 class="post-title title-sm"><a href="#" th:text="${book.title}"></a></h3>
+									<ul class="post-meta">
+										<li><a href="#" th:text="${book.title}"></a></li>
+										<li th:text="${book.createDateTime}"></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- /post -->
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</html>

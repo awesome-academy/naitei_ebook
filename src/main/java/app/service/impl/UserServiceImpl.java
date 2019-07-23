@@ -23,17 +23,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean deleteUser(Integer id) {
-		try {
-			User user = getUserDAO().findById(id);
-			return delete(user);
-		} catch (Exception e) {
-			logger.error(e);
-			throw e;
-		}
-	}
-
-	@Override
 	public List<User> searchUsers(String query) {
 		try {
 			return getUserDAO().search(query);
