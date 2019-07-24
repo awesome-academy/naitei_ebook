@@ -17,35 +17,31 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 import java.util.Locale;
 
-import app.model.Book;
-import app.service.BookService;
+import app.model.Category;
+import app.service.CategoryService;
 
 @Controller
-public class BookController {
-	private static final Logger logger = Logger.getLogger(BookController.class);
+public class CategoryController {
+	private static final Logger logger = Logger.getLogger(CategoryController.class);
 
 	@Autowired
-	private BookService bookService;
+	private CategoryService categoryService;
 
 	@Autowired
 	private MessageSource messageSource;
 
-	@RequestMapping(value = "/books")
+	@RequestMapping(value = "admin/categories")
 	public ModelAndView index() {
-		ModelAndView model = new ModelAndView("front/book/index");
-		model.addObject("books", bookService.loadBooks());
+		ModelAndView model = new ModelAndView("admin/category/index");	
+		model.addObject("categories", categoryService.list());
 		return model;
+	}
+	@RequestMapping(value = "admin/categories/save", method = RequestMethod.POST)
+	public String save(@ModelAttribute("categoryForm") Category newCategory, BindingResult errors) {
+		logger.info("add categories");
+		logger.info(newCategory);
+		categoryService.saveOrUpdate(newCategory);
+		return "redirect:/admin/categories";
 	}
 	
-	@RequestMapping(value = "/books/{id}")
-	public ModelAndView show(@PathVariable("id") int id) {
-		ModelAndView model = new ModelAndView("front/book/show");
-		Book book =  bookService.findById(id);
-		if (book == null) {
-			model.addObject("error", messageSource.getMessage("book.notFound", null, Locale.US));
-		} else {
-			model.addObject("book", book);
-		}
-		return model;
-	}
 }

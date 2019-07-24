@@ -8,6 +8,9 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<bean id="UserDAO" class="app.dao.impl.UserDAOImpl">
-		<property name="sessionFactory"><ref bean="sessionFactory" /></property>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="CategoryDAO" class="app.dao.impl.CategoryDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 </beans>

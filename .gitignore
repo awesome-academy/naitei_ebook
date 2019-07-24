@@ -37,6 +37,7 @@ target
 .classpath
 .project
 .settings
+.idea
 src/main/webapp/META-INF
 # Eclipse artifacts, including WTP generated manifests
 .classpath

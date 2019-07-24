@@ -1,11 +1,13 @@
 package app.service.impl;
 
 import app.dao.BookDAO;
+import app.dao.CategoryDAO;
 import app.dao.UserDAO;
 
 public class BaseServiceImpl {
 	protected BookDAO bookDAO;
 	protected UserDAO userDAO;
+	protected CategoryDAO categoryDAO;
 
 	public BookDAO getBookDAO() {
 		return bookDAO;
@@ -21,5 +23,13 @@ public class BaseServiceImpl {
 
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
+	}
+	
+	public CategoryDAO getCategoryDAO() {
+		return categoryDAO;
+	}
+
+	public void setCategoryDAO(CategoryDAO categoryDAO) {
+		this.categoryDAO = categoryDAO;
 	}
 }

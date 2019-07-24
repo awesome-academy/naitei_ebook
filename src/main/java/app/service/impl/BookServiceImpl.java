@@ -26,8 +26,12 @@ public class BookServiceImpl extends BaseServiceImpl implements BookService {
 
 	@Override
 	public Book findById(Serializable key) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return getBookDAO().findById(key);
+		} catch (Exception e) {
+			logger.error(e);
+			return null;
+		}
 	}
 
 	@Override

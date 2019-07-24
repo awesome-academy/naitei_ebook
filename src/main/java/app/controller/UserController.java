@@ -2,6 +2,7 @@ package app.controller;
 
 import org.apache.log4j.Logger;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,25 +27,19 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
+	
 	@RequestMapping(value = "users/{id}", method = RequestMethod.GET)
 	public ModelAndView show(@PathVariable("id") int id) {
 		logger.info("detail user");
 		ModelAndView model = new ModelAndView("/front/user/show");
 		User user = userService.findById(id);
-		if (user == null) {
-			model.addObject("error", true);
-		} else {
+		if(user == null) {
+			model.addObject("error",true);
+		}
+		else {
 			model.addObject("user", user);
 
 		}
-		return model;
-	}
-
-	@RequestMapping(value = "/admin/users")
-	public ModelAndView index() {
-		ModelAndView model = new ModelAndView("/admin/user/index");	
-		model.addObject("users", userService.loadUsers());
 		return model;
 	}
 

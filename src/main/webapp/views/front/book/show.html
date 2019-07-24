@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="front/layout">
+<div layout:fragment="body">
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-8">
+                    <div th:if="${error}">
+                        <p th:text="${error}"></p>
+                    </div>
+                    <div th:unless="${error}">
+                        <div class="section-row">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img class="img-cover" th:src="${book.cover}" th:alt="${book.title}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="book-info">
+                                        <h1 th:text="${book.title}"></h1>
+                                        <p th:text="${book.author}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-row">
+                            <iframe class="iframe-pdf" th:src="${book.link}"></iframe>
+                        </div>
+    
+                        <!-- post content -->
+                        <div class="section-row">
+                            <p>review</p>
+                        </div>
+                        <!-- /post content -->
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html> 

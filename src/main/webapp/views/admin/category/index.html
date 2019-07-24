@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="admin/layout">
+
+
+<div layout:fragment="body">
+<<<<<<< HEAD
+    <form modelAttribute="categoryForm" th:action="@{categories/save}" th:object="${newCategory}" method="post">
+=======
+>>>>>>> 0646d4e12090f38bd1dab8151ae7dc1da03a9c43
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody th:each="category : ${categories}">
+            <tr>
+                <th scope="row" th:text="${category.id}"></th>
+                <td th:text="${category.name}"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+            </tr>
+            <tr>
+                <td><label for="name">Name </label></td>
+                <td><input type="text" name="name" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        </tfoot>
+    </table>
+    </form>
+</div>
+</html>
