@@ -33,6 +33,16 @@
 			</bean>
 		</property>
 	</bean>
+
+	<bean id="CommentService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="app.service.impl.CommentServiceImpl">
+				<property name="commentDAO" ref="CommentDAO" />
+				<property name="bookDAO" ref="bookDAO" />
+			</bean>
+		</property>
+	</bean>
+
 	<bean id="MyUserDetailsService" parent="baseTransactionProxy">
 		<property name="target">
 			<bean class="app.service.impl.MyUserDetailsServiceImpl">

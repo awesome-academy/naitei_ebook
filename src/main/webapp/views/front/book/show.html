@@ -24,8 +24,8 @@
                                 <div class="col-md-8">
                                     <div class="book-info">
                                         <h1 th:text="${book.title}"></h1>
-                                        <h2 th:text="${book.category.name}"></h2>
-                                        <p th:text="${book.author}"></p>
+<!--                                         <h2 th:text="${book.category.name}"></h2>-->    
+                                    <p th:text="${book.author}"></p>
                                     </div>
                                     <div class="book-review">
                                     	<p th:text="${review.content}"></p>
@@ -36,6 +36,66 @@
                         <div class="section-row">
                             <iframe class="iframe-pdf" th:src="${book.link}"></iframe>
                         </div>
+                        <!-- post comments -->
+						<div class="section-row">
+							<div class="section-title">
+								<h3 class="title">Comments</h3>
+							</div>
+							
+							<div class="post-comments" th:each="cm : ${comments}">
+								<!-- comment -->
+								<div class="media">
+									<div class="media-left">
+										<img class="media-object" src="./img/avatar-2.jpg" alt="">
+									</div>
+									<div class="media-body">
+										<div class="media-heading">
+											<h4>John Doe</h4>
+											<span class="time">5 min ago</span>
+										</div>
+										<p th:text="${cm.content}"></p>
+										<!-- comment -->
+										<div class="media media-author" th:each="reply : ${cm.replies}">
+											<div class="media-left">
+												<img class="media-object" src="./img/avatar-1.jpg" alt="">
+											</div>
+											<div class="media-body">
+												<div class="media-heading">
+													<h4>John Doe</h4>
+													<span class="time">5 min ago</span>
+												</div>
+												<p th:text="${reply.content}"></p>
+											</div>
+										</div>
+										<!-- /comment -->
+										<form class="form-inline" method="post" th:action="@{${book.id}+'/comments'}">
+											<div class="form-group">
+												<input class="hidden" th:value="${cm.id}" name="comment.id">
+												<textarea class="input" th:field="*{comment.content}" placeholder="Message"></textarea>
+											</div>
+											<button class="reply">Reply</button>
+										</form>
+									</div>
+								</div>
+								<!-- /comment -->
+							</div>
+							<div>
+								<form th:action="@{${book.id}+'/comments'}" th:object="${comment}" method="post">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<textarea class="input" th:field="*{content}" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<button class="primary-button">Submit</button>
+										</div>
+		
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- /post comments -->
                     </div>
                     
                 </div>

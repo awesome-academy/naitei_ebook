@@ -19,9 +19,11 @@ import java.util.Locale;
 import javax.validation.Valid;
 
 import app.model.Book;
+import app.model.Comment;
 import app.model.Review;
 import app.service.BookService;
 import app.service.CategoryService;
+import app.service.CommentService;
 
 @Controller
 public class BookController {
@@ -32,6 +34,9 @@ public class BookController {
 
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	@Autowired
 	private MessageSource messageSource;
@@ -53,6 +58,9 @@ public class BookController {
 			Review review = book.getReview();
 			model.addObject("book", book);
 			model.addObject("review", review);
+			model.addObject("comments", commentService.listComments(id));
+			model.addObject("comment", new Comment());
+			logger.info(commentService.listComments(id));
 		}
 		return model;
 	}
@@ -89,7 +97,6 @@ public class BookController {
 		if (bindingBook.hasErrors() || bindingReview.hasErrors()) {
 			return "front/book/create";
 		}
-//		book.setCategory(categoryService.findById());
 		Book newBook = bookService.save(book, review);	
 		if(newBook == null) {
 			redirectAttributes.addFlashAttribute("css", "danger");

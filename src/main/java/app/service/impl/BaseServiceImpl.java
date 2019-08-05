@@ -2,6 +2,7 @@ package app.service.impl;
 
 import app.dao.BookDAO;
 import app.dao.CategoryDAO;
+import app.dao.CommentDAO;
 import app.dao.ReviewDAO;
 import app.dao.UserDAO;
 
@@ -10,6 +11,7 @@ public class BaseServiceImpl {
 	protected ReviewDAO reviewDAO;
 	protected UserDAO userDAO;
 	protected CategoryDAO categoryDAO;
+	protected CommentDAO commentDAO;
 
 	public BookDAO getBookDAO() {
 		return bookDAO;
@@ -41,5 +43,13 @@ public class BaseServiceImpl {
 
 	public void setReviewDAO(ReviewDAO reviewDAO) {
 		this.reviewDAO = reviewDAO;
+	}
+	
+	public CommentDAO getCommentDAO() {
+		return commentDAO;
+	}
+
+	public void setCommentDAO(CommentDAO commentDAO) {
+		this.commentDAO = commentDAO;
 	}
 }
