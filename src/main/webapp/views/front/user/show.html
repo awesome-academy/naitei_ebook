@@ -4,6 +4,7 @@
 	layout:decorate="front/layout">
 <div layout:fragment="body">
 	<div class="container emp-profile">
+	<h1 th:text="${#authentication.name}"></h1>
 		<form method="post">
 			<div class="row">
 				<div class="col-md-4">

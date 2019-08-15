@@ -12,10 +12,10 @@
 		<input type="submit" value="Sign in" />
 	</form>
 	<br>
-	<!-- <form action="#" th:action="@{j_spring_security_logout}" method="post">
-		<input type="submit" value="Sign out" />
+	<form action="#" th:action="@{/j_spring_security_logout}" method="post">
+		<input type="submit" value="Sign out" sec:authorize="isAuthenticated()" />
 	</form>
-	<br> -->
+	<br>
 	<form action="#" th:action="@{/register}" method="post">
 		<input type="submit" value="Register" />
 	</form>
