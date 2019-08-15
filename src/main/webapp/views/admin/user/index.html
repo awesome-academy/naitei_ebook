@@ -8,7 +8,7 @@
 <div layout:fragment="body">
 	<h1 th:text="${success}"></h1>
 	<h1 th:text="${error}"></h1>
-<!-- 	<h1 th:text="${session.userLoged.name}"></h1> -->
+	<h1 th:text="${#authentication.name}"></h1>
 	<div class="section">
 		<!-- container -->
 		<div class="container">

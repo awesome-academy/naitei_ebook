@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import app.model.User;
 import app.service.UserService;
 
 @Controller
@@ -55,7 +56,7 @@ public class HomeController extends BaseController {
 
 	@RequestMapping("/logout")
 	public String logout(final Model model) {
-		return "login";
+		return "front/login";
 	}
 
 	@RequestMapping(value = "/register")

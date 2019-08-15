@@ -81,7 +81,10 @@
 						</li>
 						<li><a th:href="@{/books/new}">Add Book</a></li>
 						<li><form id="signIn" action="#" th:action="@{/login}">
-								<a class="nav-button" href="javascript:{}" onclick="document.getElementById('signIn').submit();">SIGN IN</a>
+								<a sec:authorize="isAnonymous()" class="nav-button" href="javascript:{}" onclick="document.getElementById('signIn').submit();">SIGN IN</a>
+							</form>
+							<form action="#" th:action="@{/j_spring_security_logout}" method="post">
+								<input type="submit" value="Sign out" sec:authorize="isAuthenticated()" />
 							</form>
 						</li>
 					</ul>
